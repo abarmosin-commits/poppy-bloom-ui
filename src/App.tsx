@@ -7,6 +7,7 @@ const Products = lazy(() => import('./pages/Products'));
 const ProductDetail = lazy(() => import('./pages/ProductDetail'));
 const Advertising = lazy(() => import('./pages/Advertising'));
 const Finance = lazy(() => import('./pages/Finance'));
+const Sales = lazy(() => import('./pages/Sales'));
 
 export function App() {
   return <AppErrorBoundary><Routes><Route element={<AppLayout />}>
@@ -16,6 +17,7 @@ export function App() {
     <Route path="products/:productId" element={<Suspense fallback={<div className="loading-state" role="status">Загружаем товар…</div>}><ProductDetail /></Suspense>} />
     <Route path="advertising" element={<Suspense fallback={<div className="loading-state" role="status">Загружаем рекламу…</div>}><Advertising /></Suspense>} />
     <Route path="finance" element={<Suspense fallback={<div className="loading-state" role="status">Загружаем финансы…</div>}><Finance /></Suspense>} />
+    <Route path="sales" element={<Suspense fallback={<div className="loading-state" role="status">Загружаем продажи…</div>}><Sales /></Suspense>} />
     <Route path="*" element={<section className="empty-state"><h1>Страница не найдена</h1><p>Проверьте адрес или вернитесь к обзору бизнеса.</p><Link className="text-link" to="/dashboard">Открыть Dashboard</Link></section>} />
   </Route></Routes></AppErrorBoundary>;
 }

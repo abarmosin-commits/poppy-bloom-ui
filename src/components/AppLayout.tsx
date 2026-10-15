@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { NavLink, Outlet, useLocation, useOutletContext } from 'react-router-dom';
-import { LayoutDashboard, Package, Megaphone, Wallet, Menu, X, Info } from 'lucide-react';
+import { LayoutDashboard, Package, Megaphone, Wallet, ShoppingCart, Menu, X, Info } from 'lucide-react';
 import { dataSource } from '../data/source';
 import type { DataSource } from '../data/source';
 
@@ -16,6 +16,7 @@ const navigation = [
   {to:'/products',label:'Products',detail:'Товары',icon:Package},
   {to:'/advertising',label:'Advertising',detail:'Реклама',icon:Megaphone},
   {to:'/finance',label:'Finance',detail:'Финансы',icon:Wallet},
+  {to:'/sales',label:'Sales',detail:'Продажи',icon:ShoppingCart},
 ];
 export function AppLayout() {
   const [menuOpen,setMenuOpen] = useState(false);
