@@ -1,0 +1,8 @@
+import type {DashboardUi} from '../adapters/dashboard';
+import type {DashboardResponseContract} from './dashboard';
+
+export type AiSeverity='info'|'warning'|'critical';
+export interface DashboardAiContext {period:{dateFrom:string;dateTo:string};facts:{financial:DashboardResponseContract['financial'];operations:DashboardResponseContract['operations'];advertising:DashboardResponseContract['advertising']};dataStatus:DashboardResponseContract['data_status'];periodCoverage:DashboardResponseContract['period_coverage'];warnings:DashboardResponseContract['warnings'];sku:Array<{nmId:number;title:string|null;vendorCode:string|null;metrics:DashboardResponseContract['sku_economics'][number]['metrics']}>}
+export interface DashboardAiRecommendation {nmId:number;metric:string;evidenceState:'authoritative'|'preliminary'|'unavailable';coverageState:string;reason:string;action:string;severity:AiSeverity;requiresDataCheck:boolean}
+export interface DashboardAiResult {recommendations:DashboardAiRecommendation[];fallback:boolean;warning:string|null}
+export function dashboardAiContext(data:DashboardUi):DashboardAiContext{return {period:{dateFrom:data.period.dateFrom,dateTo:data.period.dateTo},facts:data.metrics,dataStatus:data.dataStatus??{},periodCoverage:data.periodCoverage??{resolved:{requested:{date_from:data.period.dateFrom,date_to:data.period.dateTo,timezone:'UTC+03:00',inclusive_days:data.period.days},effective:null,excluded:null,business_start:null,policy_provenance:'unavailable'},sources:{}},warnings:data.warnings,sku:data.products.map(p=>({nmId:Number(p.id),title:p.name,vendorCode:p.article,metrics:{}}))}}
