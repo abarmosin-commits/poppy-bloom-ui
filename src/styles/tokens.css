@@ -1,0 +1,27 @@
+/* Single source of design tokens. Values are provisional, not verified Figma tokens. */
+@theme {
+  --font-sans: "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  --color-canvas: #f7f7f9;
+  --color-surface: #ffffff;
+  --color-rail: #f1eef5;
+  --color-text: #282430;
+  --color-muted: #686171;
+  --color-border: #e6e2e9;
+  --color-control-border: #8f8799;
+  --color-accent: #72539a;
+  --color-accent-hover: #604383;
+  --color-accent-soft: #e5dced;
+  --color-accent-ink: #52376f;
+  --color-warning: #805a1a;
+  --color-warning-soft: #faf3e5;
+  --color-focus: #72539a;
+  --radius-control: 8px;
+  --radius-panel: 12px;
+  --spacing-unit: 4px;
+  --text-page: 1.875rem;
+  --text-section: 1.0625rem;
+  --text-body: 0.875rem;
+  --text-caption: 0.75rem;
+  --text-metric: 1.625rem;
+  --spacing-rail: 232px;
+}
