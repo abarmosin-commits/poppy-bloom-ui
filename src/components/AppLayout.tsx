@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { NavLink, Outlet, useLocation, useOutletContext } from 'react-router-dom';
-import { LayoutDashboard, Package, Megaphone, Wallet, ShoppingCart, Menu, X, Info } from 'lucide-react';
+import { LayoutDashboard, Package, Megaphone, Wallet, ShoppingCart, FileText, Menu, X, Info } from 'lucide-react';
 import { dataSource } from '../data/source';
 import type { DataSource } from '../data/source';
 
@@ -17,6 +17,7 @@ const navigation = [
   {to:'/advertising',label:'Advertising',detail:'Реклама',icon:Megaphone},
   {to:'/finance',label:'Finance',detail:'Финансы',icon:Wallet},
   {to:'/sales',label:'Sales',detail:'Продажи',icon:ShoppingCart},
+  {to:'/content',label:'Content Lab',detail:'Content Lab',icon:FileText},
 ];
 export function AppLayout() {
   const [menuOpen,setMenuOpen] = useState(false);
@@ -29,7 +30,7 @@ export function AppLayout() {
     setReportedSource(previous => previous?.path === location.pathname && previous.source === source
       ? previous : { path: location.pathname, source });
   }, [location.pathname]);
-  const alwaysMock = location.pathname === '/advertising' || location.pathname === '/finance';
+  const alwaysMock = location.pathname === '/advertising' || location.pathname === '/finance' || location.pathname === '/content';
   const actualSource = alwaysMock ? 'mock' : reportedSource?.path === location.pathname ? reportedSource.source : dataSource;
   const isMock = actualSource === 'mock';
   useEffect(() => {
