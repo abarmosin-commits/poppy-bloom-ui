@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { NavLink, Outlet, useLocation, useOutletContext } from 'react-router-dom';
-import { LayoutDashboard, Package, Megaphone, Wallet, ShoppingCart, Menu, X, Info, Palette, Printer } from 'lucide-react';
+import { LayoutDashboard, Package, Megaphone, Wallet, ShoppingCart, Menu, X, Info, Palette, Printer, FileText } from 'lucide-react';
 import { dataSource } from '../data/source';
 import type { DataSource } from '../data/source';
 
@@ -14,6 +14,7 @@ export function useWorkspaceSource(source: DataSource) {
 const navigation = [
   {to:'/product-design',label:'Product Design',detail:'Дизайн карточки',icon:Palette},
   {to:'/print-lab',label:'Print Lab',detail:'Печатные материалы',icon:Printer},
+  {to:'/content',label:'Content Lab',detail:'Контент',icon:FileText},
   {to:'/dashboard',label:'Dashboard',detail:'Обзор бизнеса',icon:LayoutDashboard},
   {to:'/products',label:'Products',detail:'Товары',icon:Package},
   {to:'/advertising',label:'Advertising',detail:'Реклама',icon:Megaphone},
@@ -31,7 +32,7 @@ export function AppLayout() {
     setReportedSource(previous => previous?.path === location.pathname && previous.source === source
       ? previous : { path: location.pathname, source });
   }, [location.pathname]);
-  const alwaysMock = location.pathname === '/advertising' || location.pathname === '/finance' || location.pathname === '/product-design' || location.pathname === '/print-lab';
+  const alwaysMock = location.pathname === '/advertising' || location.pathname === '/finance' || location.pathname === '/product-design' || location.pathname === '/print-lab' || location.pathname === '/content';
   const actualSource = alwaysMock ? 'mock' : reportedSource?.path === location.pathname ? reportedSource.source : dataSource;
   const isMock = actualSource === 'mock';
   useEffect(() => {
