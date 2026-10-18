@@ -9,11 +9,13 @@ const Advertising = lazy(() => import('./pages/Advertising'));
 const Finance = lazy(() => import('./pages/Finance'));
 const Sales = lazy(() => import('./pages/Sales'));
 const ProductDesign = lazy(() => import('./pages/ProductDesign'));
+const PrintLab = lazy(() => import('./pages/PrintLab'));
 
 export function App() {
   return <AppErrorBoundary><Routes><Route element={<AppLayout />}>
     <Route index element={<Navigate to="/dashboard" replace />} />
     <Route path="product-design" element={<Suspense fallback={<div className="loading-state" role="status">Загружаем Product Design…</div>}><ProductDesign /></Suspense>} />
+    <Route path="print-lab" element={<Suspense fallback={<div className="loading-state" role="status">Загружаем Print Lab…</div>}><PrintLab /></Suspense>} />
     <Route path="dashboard" element={<Suspense fallback={<div className="loading-state" role="status">Загружаем обзор…</div>}><Dashboard /></Suspense>} />
     <Route path="products" element={<Suspense fallback={<div className="loading-state" role="status">Загружаем товары…</div>}><Products /></Suspense>} />
     <Route path="products/:productId" element={<Suspense fallback={<div className="loading-state" role="status">Загружаем товар…</div>}><ProductDetail /></Suspense>} />
